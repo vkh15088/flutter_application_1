@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -31,8 +32,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool isPasswordVisible = false;
-  TextEditingController controllerUser = TextEditingController();
-  TextEditingController controllerPassword = TextEditingController();
+  final TextEditingController _controllerUser = TextEditingController();
+  final TextEditingController _controllerPassword = TextEditingController();
+  bool _isValidatedUser = true;
+  bool _isValidatedPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +49,16 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             children: [
               TextField(
-                decoration: const InputDecoration(labelText: 'User'),
-                controller: controllerUser,
+                decoration: InputDecoration(
+                    labelText: 'User',
+                    errorText: _isValidatedUser ? null : 'Invalid User'),
+                controller: _controllerUser,
               ),
               const SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
                   labelText: 'Password',
+                  errorText: _isValidatedPassword ? null : 'Invalid Password',
                   suffixIcon: GestureDetector(
                     child: isPasswordVisible
                         ? const Icon(
@@ -69,15 +75,40 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 obscureText: isPasswordVisible ? false : true,
-                controller: controllerPassword,
+                controller: _controllerPassword,
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 child: const Text('Login'),
-                onPressed: () {},
+                onPressed: _validateUserInfo,
               )
             ],
           ),
         ));
+  }
+
+  void _validateUserInfo() {
+    String user = _controllerUser.text;
+    String password = _controllerPassword.text;
+    setState(() {
+      if (user.isEmpty || !user.contains("@")) {
+        _isValidatedUser = false;
+      } else {
+        _isValidatedUser = true;
+      }
+
+      if (password.isEmpty || password.length < 8) {
+        _isValidatedPassword = false;
+      } else {
+        _isValidatedPassword = true;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controllerUser.dispose();
+    _controllerPassword.dispose();
+    super.dispose();
   }
 }
