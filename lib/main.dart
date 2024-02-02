@@ -79,8 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                child: const Text('Login'),
                 onPressed: _validateUserInfo,
+                child: const Text('Login'),
               )
             ],
           ),
