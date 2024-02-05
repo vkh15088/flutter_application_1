@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,7 +11,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool isPasswordVisible = false;
-  final TextEditingController _controllerUser = TextEditingController();
+  final TextEditingController _controllerEmail = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
   bool _isValidatedUser = true;
   bool _isValidatedPassword = true;
@@ -20,12 +21,14 @@ class _LoginPageState extends State<LoginPage> {
     return Container(
       padding: const EdgeInsets.all(16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           TextField(
             decoration: InputDecoration(
-                labelText: 'User',
-                errorText: _isValidatedUser ? null : 'Invalid User'),
-            controller: _controllerUser,
+                labelText: 'Email',
+                errorText: _isValidatedUser ? null : 'Invalid Email'),
+            controller: _controllerEmail,
           ),
           const SizedBox(height: 20),
           TextField(
@@ -51,9 +54,27 @@ class _LoginPageState extends State<LoginPage> {
             controller: _controllerPassword,
           ),
           const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: _validateUserInfo,
-            child: const Text('Login'),
+          Center(
+            child: ElevatedButton(
+              onPressed: _validateUserInfo,
+              child: const Text('Login'),
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          InkWell(
+            child: const Text('Not have an account!',
+                style: TextStyle(
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.blue,
+                )),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (_) => RegisterPage(),
+              ));
+            },
           )
         ],
       ),
@@ -61,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _validateUserInfo() {
-    String user = _controllerUser.text;
+    String user = _controllerEmail.text;
     String password = _controllerPassword.text;
     setState(() {
       if (user.isEmpty || !user.contains("@")) {
@@ -84,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
     try {
       final userCredential =
           await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _controllerUser.text,
+        email: _controllerEmail.text,
         password: _controllerPassword.text,
       );
     } on FirebaseAuthException catch (e) {
@@ -109,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void dispose() {
-    _controllerUser.dispose();
+    _controllerEmail.dispose();
     _controllerPassword.dispose();
     super.dispose();
   }
