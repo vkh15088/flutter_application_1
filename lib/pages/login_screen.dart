@@ -1,5 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:flutter_application_1/core/shared/themes/app_dimension.dart';
 import 'package:flutter_application_1/pages/register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -19,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(AppSpacing.extraSmall),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -72,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                 )),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => RegisterPage(),
+                builder: (_) => const RegisterPage(),
               ));
             },
           )
@@ -112,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
       if (e.code == 'invalid-email') {
         ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(content: Text('Wrong email format')));
-      } else if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
+      } else if (e.code == '8') {
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Wrong user or password')));
       } else if (e.code == 'user-not-found') {
