@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:formz/formz.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_application_1/core/shared/form/app_form_state.dart';
 import 'package:flutter_application_1/core/shared/form/email.dart';
@@ -8,8 +10,6 @@ import 'package:flutter_application_1/core/shared/themes/app_color_light.dart';
 import 'package:flutter_application_1/core/shared/themes/app_dimension.dart';
 import 'package:flutter_application_1/core/shared/widgets/c_progress_bar.dart';
 import 'package:flutter_application_1/pages/register_screen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:formz/formz.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({

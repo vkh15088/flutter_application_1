@@ -1,6 +1,7 @@
+import 'package:formz/formz.dart';
+
 import 'package:flutter_application_1/core/shared/form/email.dart';
 import 'package:flutter_application_1/core/shared/form/password.dart';
-import 'package:formz/formz.dart';
 
 class AppFormState with FormzMixin {
   AppFormState(
