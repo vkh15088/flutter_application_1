@@ -1,6 +1,5 @@
 import 'package:formz/formz.dart';
 
-// enum EmailValidationError { invalid, empty }
 enum EmailValidationError {
   invalid,
   empty;
@@ -34,14 +33,3 @@ class Email extends FormzInput<String, EmailValidationError>
     return null;
   }
 }
-
-// extension on EmailValidationError {
-//   String text() {
-//     switch (this) {
-//       case EmailValidationError.invalid:
-//         return 'Please ensure the email entered is valid';
-//       case EmailValidationError.empty:
-//         return 'Please enter an email';
-//     }
-//   }
-// }

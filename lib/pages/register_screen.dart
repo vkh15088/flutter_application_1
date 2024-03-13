@@ -146,7 +146,9 @@ class _RegisterPageState extends State<RegisterPage> {
       }
     }
 
-    _isShowProgressBar = false;
+    setState(() {
+      _isShowProgressBar = false;
+    });
 
     if (userCredential != null) {
       if (!mounted) return;
