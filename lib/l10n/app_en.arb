@@ -1,0 +1,16 @@
+{
+  "logIn": "Log In",
+  "loginSuccessed" : "Login successed",
+  "email" : "Email",
+  "password" : "Password",
+  "invalidEmail" : "Invalid Email",
+  "invalidPassword" : "Invalid Password",
+  "notHaveAccount" : "Not have an account!",
+  "wrongEmailFormat" : "Wrong Email format",
+  "wrongEmailOrPassword" : "Wrong Email or Password",
+  "wrongEmail" : "Wrong Email",
+  "wrongPassword" : "Wrong Password",
+  "register" : "Register",
+  "emailExisted" : "Email has already existed !",
+  "weakPassword" : "Weak Password"
+}

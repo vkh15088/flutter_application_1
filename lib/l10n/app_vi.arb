@@ -1,0 +1,16 @@
+{
+  "logIn": "Đăng nhập",
+  "loginSuccessed" : "Đăng nhập thành công",
+  "email" : "Email",
+  "password" : "Mật khẩu",
+  "invalidEmail" : "Email không hợp lệ",
+  "invalidPassword" : "Password không hợp lệ",
+  "notHaveAccount" : "Chưa có tài khoản!",
+  "wrongEmailFormat" : "Sai định dạng Email",
+  "wrongEmailOrPassword" : "Sai Email hoặc Mật khẩu",
+  "wrongEmail" : "Sai thông tin Email",
+  "wrongPassword" : "Sai thông tin Mật khẩu",
+  "register" : "Đăng ký",
+  "emailExisted" : "Email này đã tồn tại!",
+  "weakPassword" : "Mật khẩu yếu"
+}
