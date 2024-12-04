@@ -1,0 +1,19 @@
+on: push #Trigger when push code
+name: Test, Build and Release apk
+jobs:
+  build:
+    name: Build APK #Job name
+    runs-on: ubuntu-latest #Job run on ubuntu
+    steps:
+    - uses: actions/checkout@v2 #checkout
+    - uses: actions/setup-java@v1 #install jdk
+      with:
+        java-version: '12.x'
+    - uses: subosito/flutter-action@v1 #install Flutter
+      with:
+        flutter-version: '3.24.3'
+    - run: flutter clean
+    - run: flutter pub get
+    - run: flutter build apk
+    # - run: flutter test
+    # - run: flutter build apk --debug --split-per-abi
