@@ -1,4 +1,4 @@
-on: push #Trigger when push code
+on: push #Trigger when push code 
 name: Test, Build and Release apk
 jobs:
   build:
