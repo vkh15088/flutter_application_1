@@ -26,9 +26,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       obscureText: widget.obscureText,
       decoration: InputDecoration(
         labelText: widget.labelText,
-        prefixIcon: widget.prefixIcon != null
-            ? Icon(widget.prefixIcon)
-            : const Icon(Icons.abc),
+        prefixIcon: Icon(widget.prefixIcon),
         border: const OutlineInputBorder(),
       ),
     );
